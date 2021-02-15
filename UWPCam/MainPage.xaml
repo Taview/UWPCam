@@ -1,0 +1,51 @@
+﻿<Page
+    x:Class="UWPCam.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWPCam"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid x:Name="RootGrid" Margin="12,20,12,12">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Margin="0,0,0,10">
+                <!--<TextBlock Text="Description:" Style="{StaticResource SampleHeaderTextStyle}"/>
+                <TextBlock Style="{StaticResource ScenarioDescriptionTextStyle}" TextWrapping="Wrap">
+          Get and set all possible combinations of resolution and framerate settings for a given camera device.
+                </TextBlock>-->
+            </StackPanel>
+
+            <StackPanel Grid.Row="1"  Orientation="Horizontal">
+                <TextBlock Text="&#xE722;" Margin="10" FontSize="36" FontFamily="Segoe MDL2 Assets"/>
+                <ComboBox Name="CamerasDropDown" PlaceholderText="Cameras"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                <TextBlock Text="&#xE80A;" Margin="10" FontSize="36" FontFamily="Segoe MDL2 Assets"/>
+                <ComboBox Name="CameraSettings" PlaceholderText="Preview Settings" SelectionChanged="ComboBoxSettings_Changed" 
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                <TextBlock Text="&#xE720;" Margin="10" FontSize="36" FontFamily="Segoe MDL2 Assets"/>
+                <ComboBox Name="MicDropDown" PlaceholderText="Mics"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" Width="Auto"/>
+                <Button Content="Init Session" HorizontalAlignment="Center" VerticalAlignment="Center" Click="InitCamSession_Click"/>
+                <Button Content="Start Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StartRec_Click"/>
+                <Button Content="Stop Recording" HorizontalAlignment="Center" VerticalAlignment="Center" Click="StopRec_Click"/>
+
+                <TextBlock Margin="5" VerticalAlignment="Center" Text="Path"/>
+                <TextBox Text="Some Folder" VerticalAlignment="Center" x:Name="FolderPath" Width="1000"/>
+            </StackPanel>
+
+            <!--<Button Grid.Row="2" Content="Initialize Camera" Click="InitializeCameraButton_Click" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
+
+            <Viewbox Grid.Row="2">
+                <!--Camera preview-->
+                <CaptureElement Name="PreviewControl" Stretch="Uniform" Visibility="Visible"/>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Page>
